@@ -1,5 +1,5 @@
 'use strict'; 
-$(window).load( function() {	
+$(window).load(function() { 
     
 
     //PRELOADER
@@ -11,7 +11,7 @@ $(window).load( function() {
 
     $('.portfolio_filter ul li').on("click", function(){
         $(".portfolio_filter ul li").removeClass("select-cat");
-        $(this).addClass("select-cat");				 
+        $(this).addClass("select-cat");              
         var selector = $(this).attr('data-filter');
         $(".isotope_items").isotope({
             filter: selector,
@@ -30,7 +30,7 @@ $(window).load( function() {
 
 
 
-$(document).ready( function() {	
+$(document).ready(function() {  
     
     
     // WOW JS
@@ -80,18 +80,18 @@ $(document).ready( function() {
         
 
     //NAVBAR SHOW - HIDE
-    $(window).scroll(function() {				
+    $(window).scroll(function() {               
     var scroll = $(window).scrollTop();
-    var homeheight = $(".home").height() -86;			
+    var homeheight = $(".home").height() -86;           
 
-    if (scroll > homeheight ) {												
+    if (scroll > homeheight) {                                              
         $("nav").slideDown(100);
         } else {
         $("nav").slideUp(100);
         }
      }); 
     
-    	
+        
     // RESPONSIVE MENU
 $('.responsive').on('click', function (e) {
         $('.nav-menu').slideToggle();
@@ -169,17 +169,28 @@ $('.responsive').on('click', function (e) {
         if (required === 0)
         {
             console.log(uri);
-            $.ajax({
-                type: "POST",
-                url: uri,
-                data: {con_name: con_name, con_email: con_email, con_message: con_message},
-                success: function(data)
-                {
-                    $(".contact-form input, .contact-form textarea").val('');
-                    $("#con_submit").val('Mensagem enviada!');
-					$("#con_submit").addClass("ok");
-					console.log(data);
-                }
+            // $.ajax({
+            //     type: "POST",
+            //     url: uri,
+            //     data: {con_name: con_name, con_email: con_email, con_message: con_message},
+            //     success: function(data)
+            //     {
+            //         $(".contact-form input, .contact-form textarea").val('');
+            //         $("#con_submit").val('Mensagem enviada!');
+            //         $("#con_submit").addClass("ok");
+            //         console.log(data);
+            //     }
+            // });
+
+            uri += "?con_name=" + con_name;
+            uri += "&con_email=" + con_email;
+            uri += "&con_message=" + con_message;
+
+            $.getJSON(uri, function(data) {
+                $(".contact-form input, .contact-form textarea").val('');
+                $("#con_submit").val('Mensagem enviada!');
+                $("#con_submit").addClass("ok");
+                console.log(data);
             });
         }
         else
