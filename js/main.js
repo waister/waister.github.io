@@ -168,9 +168,10 @@ $('.responsive').on('click', function (e) {
         });
         if (required === 0)
         {
+            console.log(uri);
             $.ajax({
                 type: "POST",
-                url: 'mail.php',
+                url: uri,
                 data: {con_name: con_name, con_email: con_email, con_message: con_message},
                 success: function(data)
                 {
