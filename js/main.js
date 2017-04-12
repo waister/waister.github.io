@@ -141,7 +141,6 @@ $('.responsive').on('click', function (e) {
    $(".contact-form").on('submit', function(e){
         e.preventDefault();
         
-        var uri = $(this).attr('action');
         $("#con_submit").val('Enviando...');
         var con_name = $("#con_name").val();
         var con_email = $("#con_email").val();
@@ -168,7 +167,7 @@ $('.responsive').on('click', function (e) {
         });
         if (required === 0)
         {
-            console.log(uri);
+            var uri = 'https://appfolio.me/waister/mail.php';
             // $.ajax({
             //     type: "POST",
             //     url: uri,
